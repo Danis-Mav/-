@@ -1,0 +1,70 @@
+﻿<Page x:Class="TenCom.Pages.StudPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TenCom.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1800"
+      Title="StudPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" 
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Stretch">
+            <Button Height="50"
+                    FontSize="30"
+                    Width="350"
+                    Background="Aquamarine"
+                    Content="Back" Click="Back_Click"/>
+            <Button Height="50"
+                    Width="800"
+                    FontSize="30"
+                    Background="Aquamarine"
+                    Content="Add Student" Click="Add_Click"/>
+            <Button Height="50"
+                    Width="800"
+                    FontSize="30"
+                    Background="Aquamarine"
+                    Content="Red Student" Click="Red_Click"/>
+        </StackPanel>
+        <StackPanel Margin="0,50,0,0">
+            <ListView  x:Name="StudToShow" ItemsSource="{Binding stud}" SelectionChanged="stud_SelectionChanged" Height="1000">
+                <ListView.View >
+                    <GridView>
+                        <GridViewColumn Header="№" Width="30" DisplayMemberBinding="{Binding Id}" />
+
+                        <GridViewColumn Header="Фото" Width="400">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Img}" Height="300" Margin="10"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300"  Header="Фио" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="25" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"  Text="{Binding FullName}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300"  Header="Возраст" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="25" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"  Text="{Binding Age}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="300"  Header="Учебное Заведение" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock FontSize="25" HorizontalAlignment="Center" TextWrapping="WrapWithOverflow"  Text="{Binding EducationalInstitution.Name}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Page>
